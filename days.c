@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 int main() {
-  int year, month, day, inp = 0;
-  scanf("Enter number of days: %d", &inp);
+  int year, weeks, day, inp;
+  scanf("%d", &inp);
 
   year = inp / 365;
-  month = inp % 365 / 30;
-  day = inp % 365 % 30;
+  weeks = inp % 365 / 7;
+  day = inp % 365 % 7;
 
-  printf("%d year, %d month, %d day", year, month, day);
+  printf("%d year, %d weeks, %d day\n", year, weeks, day);
 
   return 0;
 }
