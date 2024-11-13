@@ -1,45 +1,35 @@
+
 #include <stdio.h>
 
-void sortDescending(int array[], int size) {
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = i + 1; j < size; j++) {
-            if (array[i] < array[j]) {
-                int temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
-        }
-    }
-}
-
 int main() {
-    int size;
+    int numberOfElements, newValue, position = 0;
 
-    printf("Enter the size of the arrays: ");
-    scanf("%d", &size);
+    printf("Enter the number of elements in the sorted array: ");
+    scanf("%d", &numberOfElements);
 
-    int firstArray[size], secondArray[size], mergedArray[2 * size];
+    int sortedArray[numberOfElements + 1];
 
-    printf("Enter %d elements for the first array:\n", size);
-    for (int i = 0; i < size; i++) {
-        scanf("%d", &firstArray[i]);
+    printf("Enter %d elements in ascending order:\n", numberOfElements);
+    for (int i = 0; i < numberOfElements; i++) {
+        scanf("%d", &sortedArray[i]);
     }
 
-    printf("Enter %d elements for the second array:\n", size);
-    for (int i = 0; i < size; i++) {
-        scanf("%d", &secondArray[i]);
+    printf("Enter the new value to insert: ");
+    scanf("%d", &newValue);
+
+    while (position < numberOfElements && sortedArray[position] < newValue) {
+        position++;
     }
 
-    for (int i = 0; i < size; i++) {
-        mergedArray[i] = firstArray[i];
-        mergedArray[size + i] = secondArray[i];
+    for (int i = numberOfElements; i > position; i--) {
+        sortedArray[i] = sortedArray[i - 1];
     }
 
-    sortDescending(mergedArray, 2 * size);
+    sortedArray[position] = newValue;
 
-    printf("Merged array in descending order:\n");
-    for (int i = 0; i < 2 * size; i++) {
-        printf("%d ", mergedArray[i]);
+    printf("Array after insertion:\n");
+    for (int i = 0; i <= numberOfElements; i++) {
+        printf("%d ", sortedArray[i]);
     }
 
     return 0;
