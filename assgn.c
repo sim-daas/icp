@@ -2,20 +2,21 @@
 
 int main() {
     int numberOfElements;
-    
+
     printf("Enter the number of elements: ");
     scanf("%d", &numberOfElements);
 
-    int elementsArray[numberOfElements];
-    
-    printf("Enter %d elements:\n", numberOfElements);
+    int sourceArray[numberOfElements], destinationArray[numberOfElements];
+
+    printf("Enter %d elements for the source array:\n", numberOfElements);
     for (int index = 0; index < numberOfElements; index++) {
-        scanf("%d", &elementsArray[index]);
+        scanf("%d", &sourceArray[index]);
+        destinationArray[index] = sourceArray[index];
     }
 
-    printf("The elements in the array are:\n");
+    printf("Elements in the destination array are:\n");
     for (int index = 0; index < numberOfElements; index++) {
-        printf("%d ", elementsArray[index]);
+        printf("%d ", destinationArray[index]);
     }
 
     return 0;
