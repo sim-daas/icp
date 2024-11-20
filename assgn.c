@@ -1,36 +1,18 @@
 
 #include <stdio.h>
 
+int countDigitsUsingRecursion(int number) {
+    if (number == 0) {
+        return 0;
+    }
+    return 1 + countDigitsUsingRecursion(number / 10);
+}
+
 int main() {
-    int numberOfElements, newValue, position = 0;
+    int inputNumber;
+    printf("Enter a number: ");
+    scanf("%d", &inputNumber);
 
-    printf("Enter the number of elements in the sorted array: ");
-    scanf("%d", &numberOfElements);
-
-    int sortedArray[numberOfElements + 1];
-
-    printf("Enter %d elements in ascending order:\n", numberOfElements);
-    for (int i = 0; i < numberOfElements; i++) {
-        scanf("%d", &sortedArray[i]);
-    }
-
-    printf("Enter the new value to insert: ");
-    scanf("%d", &newValue);
-
-    while (position < numberOfElements && sortedArray[position] < newValue) {
-        position++;
-    }
-
-    for (int i = numberOfElements; i > position; i--) {
-        sortedArray[i] = sortedArray[i - 1];
-    }
-
-    sortedArray[position] = newValue;
-
-    printf("Array after insertion:\n");
-    for (int i = 0; i <= numberOfElements; i++) {
-        printf("%d ", sortedArray[i]);
-    }
-
+    printf("The number of digits in %d is %d\n", inputNumber, countDigitsUsingRecursion(inputNumber));
     return 0;
 }
